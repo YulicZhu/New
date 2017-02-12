@@ -14,4 +14,5 @@ Sources/main_c.obj: D:\我的文档\Freescale\workplace\New\Sources\main.c \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\limits_api.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_lib_ext1.h \
 	D:\我的文档\Freescale\workplace\New\Project_Headers\WRITE_SD.h \
-	D:\我的文档\Freescale\workplace\New\Project_Headers\MODULE_Init.h 
+	D:\我的文档\Freescale\workplace\New\Project_Headers\MODULE_Init.h \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\UI_display_INT.h 

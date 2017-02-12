@@ -18,6 +18,7 @@ void SYSTEM_Init();
 void SIU_Init();
 void EMIOS_Cnf();
 long Read_Stm();
+void ADC_Init(void);
 void ADC_Enable();
 uint16_t ADC_Volt();
 uint16_t ADC_Vcurrent();

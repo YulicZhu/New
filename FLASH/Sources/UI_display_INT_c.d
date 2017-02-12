@@ -1,4 +1,4 @@
-Sources/UI_display_c.obj: D:\我的文档\Freescale\workplace\New\Sources\UI_display.c \
+Sources/UI_display_INT_c.obj: D:\我的文档\Freescale\workplace\New\Sources\UI_display_INT.c \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\lib_ewl.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\common.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_c_version.h \
@@ -13,4 +13,5 @@ Sources/UI_display_c.obj: D:\我的文档\Freescale\workplace\New\Sources\UI_display
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\cstdint \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\limits_api.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_lib_ext1.h \
-	D:\我的文档\Freescale\workplace\New\Project_Headers\MODULE_Init.h 
+	D:\我的文档\Freescale\workplace\New\Project_Headers\MODULE_Init.h \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\IntcInterrupts.h 

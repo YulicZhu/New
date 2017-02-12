@@ -8,7 +8,7 @@
 "./Sources/diskio_c.obj"
 "./Sources/ccsbcs_c.obj"
 "./Sources/WRITE_SD_c.obj"
-"./Sources/UI_display_c.obj"
+"./Sources/UI_display_INT_c.obj"
 "./Sources/SD_hardware_c.obj"
 "./Sources/MODULE_Init_c.obj"
 "./Sources/IntcInterrupts_c.obj"

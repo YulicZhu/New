@@ -10,7 +10,7 @@ C_SRCS_QUOTED += \
 "../Sources/IntcInterrupts.c" \
 "../Sources/MODULE_Init.c" \
 "../Sources/SD_hardware.c" \
-"../Sources/UI_display.c" \
+"../Sources/UI_display_INT.c" \
 "../Sources/WRITE_SD.c" \
 "../Sources/ccsbcs.c" \
 "../Sources/diskio.c" \
@@ -23,7 +23,7 @@ C_SRCS += \
 ../Sources/IntcInterrupts.c \
 ../Sources/MODULE_Init.c \
 ../Sources/SD_hardware.c \
-../Sources/UI_display.c \
+../Sources/UI_display_INT.c \
 ../Sources/WRITE_SD.c \
 ../Sources/ccsbcs.c \
 ../Sources/diskio.c \
@@ -36,7 +36,7 @@ OBJS += \
 ./Sources/IntcInterrupts_c.obj \
 ./Sources/MODULE_Init_c.obj \
 ./Sources/SD_hardware_c.obj \
-./Sources/UI_display_c.obj \
+./Sources/UI_display_INT_c.obj \
 ./Sources/WRITE_SD_c.obj \
 ./Sources/ccsbcs_c.obj \
 ./Sources/diskio_c.obj \
@@ -49,7 +49,7 @@ OBJS_QUOTED += \
 "./Sources/IntcInterrupts_c.obj" \
 "./Sources/MODULE_Init_c.obj" \
 "./Sources/SD_hardware_c.obj" \
-"./Sources/UI_display_c.obj" \
+"./Sources/UI_display_INT_c.obj" \
 "./Sources/WRITE_SD_c.obj" \
 "./Sources/ccsbcs_c.obj" \
 "./Sources/diskio_c.obj" \
@@ -62,7 +62,7 @@ C_DEPS += \
 ./Sources/IntcInterrupts_c.d \
 ./Sources/MODULE_Init_c.d \
 ./Sources/SD_hardware_c.d \
-./Sources/UI_display_c.d \
+./Sources/UI_display_INT_c.d \
 ./Sources/WRITE_SD_c.d \
 ./Sources/ccsbcs_c.d \
 ./Sources/diskio_c.d \
@@ -75,7 +75,7 @@ OBJS_OS_FORMAT += \
 ./Sources/IntcInterrupts_c.obj \
 ./Sources/MODULE_Init_c.obj \
 ./Sources/SD_hardware_c.obj \
-./Sources/UI_display_c.obj \
+./Sources/UI_display_INT_c.obj \
 ./Sources/WRITE_SD_c.obj \
 ./Sources/ccsbcs_c.obj \
 ./Sources/diskio_c.obj \
@@ -88,7 +88,7 @@ C_DEPS_QUOTED += \
 "./Sources/IntcInterrupts_c.d" \
 "./Sources/MODULE_Init_c.d" \
 "./Sources/SD_hardware_c.d" \
-"./Sources/UI_display_c.d" \
+"./Sources/UI_display_INT_c.d" \
 "./Sources/WRITE_SD_c.d" \
 "./Sources/ccsbcs_c.d" \
 "./Sources/diskio_c.d" \
@@ -135,11 +135,11 @@ Sources/SD_hardware_c.obj: ../Sources/SD_hardware.c
 	@echo 'Finished building: $<'
 	@echo ' '
 
-Sources/UI_display_c.obj: ../Sources/UI_display.c
+Sources/UI_display_INT_c.obj: ../Sources/UI_display_INT.c
 	@echo 'Building file: $<'
 	@echo 'Executing target #5 $<'
 	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/UI_display.args" -o "Sources/UI_display_c.obj" "$<" -MD -gccdep
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/UI_display_INT.args" -o "Sources/UI_display_INT_c.obj" "$<" -MD -gccdep
 	@echo 'Finished building: $<'
 	@echo ' '
 
