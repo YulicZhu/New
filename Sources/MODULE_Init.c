@@ -27,7 +27,7 @@ void SIU_Init(void)
 	/*Clock&pwm*/
 	SIU.PCR[2].B.PA=01;				//Pwm2 output channel PA2-E0UC[2]
 	SIU.PCR[68].B.PA=01;			//Pwm1 output channel PE4-E0UC[20]
-	SIU.PCR[64].B.PA=01;			//ENCODER_CLK-Modulus Counter channel input-E0-E0UC[16];
+	SIU.PCR[8].B.PA=01;			//ENCODER_CLK-Modulus Counter channel input-E0-E0UC[16];
 	SIU.PCR[71].B.PA=01;			//Timebase channel	PE7
 	
 	/*ADC-initial*/
@@ -49,7 +49,7 @@ void SIU_Init(void)
 	
 	SIU.PCR[3].R = 0x0220;
 	SIU.PCR[6].R = 0x0220;		
-	SIU.PCR[8].R = 0x0220;               
+	//SIU.PCR[8].R = 0x0220;               
 	SIU.PCR[10].R = 0x0220;               // 设置开漏输出
 	SIU.PCR[34].R = 0x0220;		
 	SIU.PCR[36].R = 0x0220;
@@ -85,7 +85,7 @@ void EMIOS_Cnf(){
 	//config output channel
 	EMIOS_0.CH[2].CCR.B.UCPEN=00;
 	EMIOS_0.CH[2].CADR.B.CADR =00;
-	EMIOS_0.CH[2].CBDR.B.CBDR =0x900;
+	EMIOS_0.CH[2].CBDR.B.CBDR =0x210;
 	EMIOS_0.CH[2].CCR.B.BSL=00;
 	EMIOS_0.CH[2].CCR.B.MODE =0140;//set channel mode to OPWMB(only A1 match FLAG)
 	EMIOS_0.CH[2].CCR.B.UCPRE=00;	//channel prescaler pass through
@@ -99,10 +99,10 @@ void EMIOS_Cnf(){
 	EMIOS_0.CH[20].CCR.B.UCPRE=00;	//channel prescaler pass through
 	EMIOS_0.CH[20].CCR.B.UCPEN =1;	//Disable UC prescaler of timebase channelA
 	//config mc counter
-	EMIOS_0.CH[16].CCR.B.MODE = 0x13; /* Modulus Counter(MC),输入模式 ,external clock*/
-	EMIOS_0.CH[16].CCR.B.EDPOL=1;
-	EMIOS_0.CH[16].CCR.B.EDSEL=0;
-	EMIOS_0.CH[16].CADR.B.CADR =0xffff;
+	EMIOS_0.CH[8].CCR.B.MODE = 0x13; /* Modulus Counter(MC),输入模式 ,external clock*/
+	EMIOS_0.CH[8].CCR.B.EDPOL=1;
+	EMIOS_0.CH[8].CCR.B.EDSEL=0;
+	EMIOS_0.CH[8].CADR.B.CADR =0xffff;
 
 	//使能EMIOS_0全局时钟
 	EMIOS_0.MCR.B.GPRE = 0;	    	//Global Prescaler pass through

@@ -6,16 +6,17 @@
 void Single_Collection();
 struct mea_res result[1024];
 int main(void) {
-	int t;
+	int t,temp;
 	SYSTEM_Init();
 	SIU_Init();
 	EMIOS_Cnf();
-	ADC_Init();//AR1,AR2
-	ExINT_Init();
+	//ADC_Init();//AR1,AR2
+	//ExINT_Init();
 	init_SD_FatFs();
-	for(t=0;t<4;t++){
+	for(t=0;t>-1;t++){
 		//Measure_Conf();											//调整AR，并用数码管显示,按x键继续
-		Single_Collection();
+		//Single_Collection();
+		temp=EMIOS_0.CH[8].CCNTR.B.CCNTR;
 	}
 }
 void Single_Collection(){
@@ -37,5 +38,5 @@ void Single_Collection(){
 	}															//使7ms1个
 	/*Saving*/
 	WRITE_SD(result);
-	EMIOS_0.CH[18].CCR.B.MODE = 00;//MS计数器清零
+	EMIOS_0.CH[16].CCR.B.MODE = 00;//MS计数器清零
 } 
