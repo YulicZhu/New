@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-#Progress monitor hint: 15
+#Progress monitor hint: 20
 first : all
 -include ../makefile.init
 
@@ -15,6 +15,9 @@ RM := "$(GNU_Make_Install_DirEnv)/rm" -f
 -include sources.mk
 -include subdir.mk
 -include Sources/subdir.mk
+-include Sources/sd/subdir.mk
+-include Sources/sd/lib/subdir.mk
+-include Sources/sd/file_handler/subdir.mk
 -include Project_Settings/Startup_Code/subdir.mk
 -include objects.mk
 
@@ -73,7 +76,7 @@ all: warning-messages explicit-dependencies New.elf
 # Tool invocations
 New.elf: $(OBJS) $(USER_OBJS) ../Project_Settings/Linker_Files/MPC5604B_FLASH.lcf
 	@echo 'Building target: $@'
-	@echo 'Executing target #16 $@'
+	@echo 'Executing target #21 $@'
 	@echo 'Invoking: PowerPC Linker'
 	"$(PAToolsDirEnv)/mwldeppc" -o "New.elf" @@"New.args"  $(USER_OBJS_QUOTED)
 	@echo 'Finished building target: $@'
@@ -81,7 +84,7 @@ New.elf: $(OBJS) $(USER_OBJS) ../Project_Settings/Linker_Files/MPC5604B_FLASH.lc
 
 # Other Targets
 clean:
-	-$(RM) $(S_DEPS_QUOTED) $(STATICLIB_QUOTED) "./*/*/*.obj" "./*/*.obj"  $(CPP_DEPS_QUOTED) $(CC_DEPS_QUOTED) $(S_UPPER_DEPS_QUOTED) $(CXX_DEPS_QUOTED) $(ASM_DEPS_QUOTED) $(ASM_UPPER_DEPS_QUOTED) $(C_UPPER_DEPS_QUOTED) $(C++_DEPS_QUOTED) $(EXECUTABLES_QUOTED) "./*/*/*.d" "./*/*.d"  $(ProjDirPath)/FLASH/New.elf
+	-$(RM) $(S_DEPS_QUOTED) $(STATICLIB_QUOTED) "./*/*/*.obj" "./*/*/*/*.obj" "./*/*.obj"  $(CPP_DEPS_QUOTED) $(CC_DEPS_QUOTED) $(S_UPPER_DEPS_QUOTED) $(CXX_DEPS_QUOTED) $(ASM_DEPS_QUOTED) $(ASM_UPPER_DEPS_QUOTED) $(C_UPPER_DEPS_QUOTED) $(C++_DEPS_QUOTED) $(EXECUTABLES_QUOTED) "./*/*/*.d" "./*/*/*/*.d" "./*/*.d"  $(ProjDirPath)/FLASH/New.elf
 	-@echo ' '
 
 .PHONY: all clean dependents explicit-dependencies warning-messages

@@ -6,103 +6,103 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS_QUOTED += \
+"../Sources/Button_INT.c" \
+"../Sources/DIGTUBE_LED.c" \
 "../Sources/Exceptions.c" \
 "../Sources/IntcInterrupts.c" \
 "../Sources/MODULE_Init.c" \
-"../Sources/SD_hardware.c" \
-"../Sources/UI_display_INT.c" \
 "../Sources/WRITE_SD.c" \
-"../Sources/ccsbcs.c" \
-"../Sources/diskio.c" \
-"../Sources/ff.c" \
+"../Sources/adc.c" \
 "../Sources/ivor_branch_table.c" \
 "../Sources/main.c" \
+"../Sources/pwm_mc.c" \
+"../Sources/spi.c" \
 
 C_SRCS += \
+../Sources/Button_INT.c \
+../Sources/DIGTUBE_LED.c \
 ../Sources/Exceptions.c \
 ../Sources/IntcInterrupts.c \
 ../Sources/MODULE_Init.c \
-../Sources/SD_hardware.c \
-../Sources/UI_display_INT.c \
 ../Sources/WRITE_SD.c \
-../Sources/ccsbcs.c \
-../Sources/diskio.c \
-../Sources/ff.c \
+../Sources/adc.c \
 ../Sources/ivor_branch_table.c \
 ../Sources/main.c \
+../Sources/pwm_mc.c \
+../Sources/spi.c \
 
 OBJS += \
+./Sources/Button_INT_c.obj \
+./Sources/DIGTUBE_LED_c.obj \
 ./Sources/Exceptions_c.obj \
 ./Sources/IntcInterrupts_c.obj \
 ./Sources/MODULE_Init_c.obj \
-./Sources/SD_hardware_c.obj \
-./Sources/UI_display_INT_c.obj \
 ./Sources/WRITE_SD_c.obj \
-./Sources/ccsbcs_c.obj \
-./Sources/diskio_c.obj \
-./Sources/ff_c.obj \
+./Sources/adc_c.obj \
 ./Sources/ivor_branch_table_c.obj \
 ./Sources/main_c.obj \
+./Sources/pwm_mc_c.obj \
+./Sources/spi_c.obj \
 
 OBJS_QUOTED += \
+"./Sources/Button_INT_c.obj" \
+"./Sources/DIGTUBE_LED_c.obj" \
 "./Sources/Exceptions_c.obj" \
 "./Sources/IntcInterrupts_c.obj" \
 "./Sources/MODULE_Init_c.obj" \
-"./Sources/SD_hardware_c.obj" \
-"./Sources/UI_display_INT_c.obj" \
 "./Sources/WRITE_SD_c.obj" \
-"./Sources/ccsbcs_c.obj" \
-"./Sources/diskio_c.obj" \
-"./Sources/ff_c.obj" \
+"./Sources/adc_c.obj" \
 "./Sources/ivor_branch_table_c.obj" \
 "./Sources/main_c.obj" \
+"./Sources/pwm_mc_c.obj" \
+"./Sources/spi_c.obj" \
 
 C_DEPS += \
+./Sources/Button_INT_c.d \
+./Sources/DIGTUBE_LED_c.d \
 ./Sources/Exceptions_c.d \
 ./Sources/IntcInterrupts_c.d \
 ./Sources/MODULE_Init_c.d \
-./Sources/SD_hardware_c.d \
-./Sources/UI_display_INT_c.d \
 ./Sources/WRITE_SD_c.d \
-./Sources/ccsbcs_c.d \
-./Sources/diskio_c.d \
-./Sources/ff_c.d \
+./Sources/adc_c.d \
 ./Sources/ivor_branch_table_c.d \
 ./Sources/main_c.d \
+./Sources/pwm_mc_c.d \
+./Sources/spi_c.d \
 
 OBJS_OS_FORMAT += \
+./Sources/Button_INT_c.obj \
+./Sources/DIGTUBE_LED_c.obj \
 ./Sources/Exceptions_c.obj \
 ./Sources/IntcInterrupts_c.obj \
 ./Sources/MODULE_Init_c.obj \
-./Sources/SD_hardware_c.obj \
-./Sources/UI_display_INT_c.obj \
 ./Sources/WRITE_SD_c.obj \
-./Sources/ccsbcs_c.obj \
-./Sources/diskio_c.obj \
-./Sources/ff_c.obj \
+./Sources/adc_c.obj \
 ./Sources/ivor_branch_table_c.obj \
 ./Sources/main_c.obj \
+./Sources/pwm_mc_c.obj \
+./Sources/spi_c.obj \
 
 C_DEPS_QUOTED += \
+"./Sources/Button_INT_c.d" \
+"./Sources/DIGTUBE_LED_c.d" \
 "./Sources/Exceptions_c.d" \
 "./Sources/IntcInterrupts_c.d" \
 "./Sources/MODULE_Init_c.d" \
-"./Sources/SD_hardware_c.d" \
-"./Sources/UI_display_INT_c.d" \
 "./Sources/WRITE_SD_c.d" \
-"./Sources/ccsbcs_c.d" \
-"./Sources/diskio_c.d" \
-"./Sources/ff_c.d" \
+"./Sources/adc_c.d" \
 "./Sources/ivor_branch_table_c.d" \
 "./Sources/main_c.d" \
+"./Sources/pwm_mc_c.d" \
+"./Sources/spi_c.d" \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Sources/Exceptions_c.obj: ../Sources/Exceptions.c
+Sources/Button_INT_c.obj: ../Sources/Button_INT.c
 	@echo 'Building file: $<'
 	@echo 'Executing target #1 $<'
 	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/Exceptions.args" -o "Sources/Exceptions_c.obj" "$<" -MD -gccdep
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/Button_INT.args" -o "Sources/Button_INT_c.obj" "$<" -MD -gccdep
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -111,9 +111,25 @@ Sources/%.d: ../Sources/%.c
 	
 	@echo ' '
 
-Sources/IntcInterrupts_c.obj: ../Sources/IntcInterrupts.c
+Sources/DIGTUBE_LED_c.obj: ../Sources/DIGTUBE_LED.c
 	@echo 'Building file: $<'
 	@echo 'Executing target #2 $<'
+	@echo 'Invoking: PowerPC Compiler'
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/DIGTUBE_LED.args" -o "Sources/DIGTUBE_LED_c.obj" "$<" -MD -gccdep
+	@echo 'Finished building: $<'
+	@echo ' '
+
+Sources/Exceptions_c.obj: ../Sources/Exceptions.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #3 $<'
+	@echo 'Invoking: PowerPC Compiler'
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/Exceptions.args" -o "Sources/Exceptions_c.obj" "$<" -MD -gccdep
+	@echo 'Finished building: $<'
+	@echo ' '
+
+Sources/IntcInterrupts_c.obj: ../Sources/IntcInterrupts.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #4 $<'
 	@echo 'Invoking: PowerPC Compiler'
 	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/IntcInterrupts.args" -o "Sources/IntcInterrupts_c.obj" "$<" -MD -gccdep
 	@echo 'Finished building: $<'
@@ -121,25 +137,9 @@ Sources/IntcInterrupts_c.obj: ../Sources/IntcInterrupts.c
 
 Sources/MODULE_Init_c.obj: ../Sources/MODULE_Init.c
 	@echo 'Building file: $<'
-	@echo 'Executing target #3 $<'
-	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/MODULE_Init.args" -o "Sources/MODULE_Init_c.obj" "$<" -MD -gccdep
-	@echo 'Finished building: $<'
-	@echo ' '
-
-Sources/SD_hardware_c.obj: ../Sources/SD_hardware.c
-	@echo 'Building file: $<'
-	@echo 'Executing target #4 $<'
-	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/SD_hardware.args" -o "Sources/SD_hardware_c.obj" "$<" -MD -gccdep
-	@echo 'Finished building: $<'
-	@echo ' '
-
-Sources/UI_display_INT_c.obj: ../Sources/UI_display_INT.c
-	@echo 'Building file: $<'
 	@echo 'Executing target #5 $<'
 	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/UI_display_INT.args" -o "Sources/UI_display_INT_c.obj" "$<" -MD -gccdep
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/MODULE_Init.args" -o "Sources/MODULE_Init_c.obj" "$<" -MD -gccdep
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -151,33 +151,17 @@ Sources/WRITE_SD_c.obj: ../Sources/WRITE_SD.c
 	@echo 'Finished building: $<'
 	@echo ' '
 
-Sources/ccsbcs_c.obj: ../Sources/ccsbcs.c
+Sources/adc_c.obj: ../Sources/adc.c
 	@echo 'Building file: $<'
 	@echo 'Executing target #7 $<'
 	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/ccsbcs.args" -o "Sources/ccsbcs_c.obj" "$<" -MD -gccdep
-	@echo 'Finished building: $<'
-	@echo ' '
-
-Sources/diskio_c.obj: ../Sources/diskio.c
-	@echo 'Building file: $<'
-	@echo 'Executing target #8 $<'
-	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/diskio.args" -o "Sources/diskio_c.obj" "$<" -MD -gccdep
-	@echo 'Finished building: $<'
-	@echo ' '
-
-Sources/ff_c.obj: ../Sources/ff.c
-	@echo 'Building file: $<'
-	@echo 'Executing target #9 $<'
-	@echo 'Invoking: PowerPC Compiler'
-	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/ff.args" -o "Sources/ff_c.obj" "$<" -MD -gccdep
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/adc.args" -o "Sources/adc_c.obj" "$<" -MD -gccdep
 	@echo 'Finished building: $<'
 	@echo ' '
 
 Sources/ivor_branch_table_c.obj: ../Sources/ivor_branch_table.c
 	@echo 'Building file: $<'
-	@echo 'Executing target #10 $<'
+	@echo 'Executing target #8 $<'
 	@echo 'Invoking: PowerPC Compiler'
 	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/ivor_branch_table.args" -o "Sources/ivor_branch_table_c.obj" "$<" -MD -gccdep
 	@echo 'Finished building: $<'
@@ -185,9 +169,25 @@ Sources/ivor_branch_table_c.obj: ../Sources/ivor_branch_table.c
 
 Sources/main_c.obj: ../Sources/main.c
 	@echo 'Building file: $<'
-	@echo 'Executing target #11 $<'
+	@echo 'Executing target #9 $<'
 	@echo 'Invoking: PowerPC Compiler'
 	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/main.args" -o "Sources/main_c.obj" "$<" -MD -gccdep
+	@echo 'Finished building: $<'
+	@echo ' '
+
+Sources/pwm_mc_c.obj: ../Sources/pwm_mc.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #10 $<'
+	@echo 'Invoking: PowerPC Compiler'
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/pwm_mc.args" -o "Sources/pwm_mc_c.obj" "$<" -MD -gccdep
+	@echo 'Finished building: $<'
+	@echo ' '
+
+Sources/spi_c.obj: ../Sources/spi.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #11 $<'
+	@echo 'Invoking: PowerPC Compiler'
+	"$(PAToolsDirEnv)/mwcceppc" @@"Sources/spi.args" -o "Sources/spi_c.obj" "$<" -MD -gccdep
 	@echo 'Finished building: $<'
 	@echo ' '
 

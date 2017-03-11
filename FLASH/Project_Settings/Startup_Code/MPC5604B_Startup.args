@@ -19,6 +19,8 @@
 -nosyspath
 -i
 "$(ProjDirPath)/Project_Headers"
+-i
+"$(ProjDirPath)/Sources"
 -I-
 -I"$(MCUToolsBaseDirEnv)/PA_Support/ewl/EWL_C/include"
 -I-

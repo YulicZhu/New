@@ -87,5 +87,8 @@ C_DEPS_QUOTED :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Sources \
+Sources/sd \
+Sources/sd/lib \
+Sources/sd/file_handler \
 Project_Settings/Startup_Code \
 

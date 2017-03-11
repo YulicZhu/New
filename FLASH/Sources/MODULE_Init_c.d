@@ -3,6 +3,7 @@ Sources/MODULE_Init_c.obj: D:\我的文档\Freescale\workplace\New\Sources\MODULE_In
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\common.prefix \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_c_version.h \
 	D:\我的文档\Freescale\workplace\New\Prefix\MPC5604B_FLASH_VLE.prefix \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\MODULE_Init.h \
 	D:\我的文档\Freescale\workplace\New\Project_Headers\MPC5604B.h \
 	D:\我的文档\Freescale\workplace\New\Project_Headers\typedefs.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\stdint.h \
@@ -13,4 +14,6 @@ Sources/MODULE_Init_c.obj: D:\我的文档\Freescale\workplace\New\Sources\MODULE_In
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\cstdint \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\limits_api.h \
 	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_lib_ext1.h \
-	D:\我的文档\Freescale\workplace\New\Project_Headers\Macro.h 
+	D:\我的文档\Freescale\workplace\New\Project_Headers\Macro.h \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\DIGTUBE_LED.h \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\pad.h 
