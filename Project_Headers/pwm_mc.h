@@ -9,9 +9,11 @@
 #define PWM_MC_H_
 #include "MPC5604B.h"
 #include "pad.h"
+#include "adc.h"
+#include "DIGTUBE_LED.h"
 
 #define PWM_duty(pwm,value) EMIOS_0.CH[pwm].CBDR.B.CBDR =value
-
+#define DUTY_REGISTER EMIOS_0.CH[PWM1].CBDR.B.CBDR
 
 
 typedef enum{
@@ -21,4 +23,5 @@ typedef enum{
 	Timebase=23
 }PWM_CHn;
 void PWM_MC_config();
+void ask_duty();
 #endif /* PWM_MC_H_ */

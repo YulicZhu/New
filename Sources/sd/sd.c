@@ -133,7 +133,7 @@ uint8_t write_block(uint32_t sector,uint8_t* buffer)
 
 	return 0;
 } 
-uint8_t SD_write_multiple_block(uint32_t sector, uint8_t n, const uint8_t buffer[][512])
+uint8_t SD_write_multiple_block(uint32_t sector, uint8_t n, const uint8_t buffer[][512])//ÓĞÎó
 {
 uint8_t a;
 uint16_t i;

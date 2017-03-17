@@ -10,7 +10,7 @@
 #include "spi.h"
 #include "sd/sd.h"
 #include "sd/file_handler/file_handle.h"
-#include "stdio.h"
+
 
 
 

@@ -19,4 +19,25 @@ Sources/Button_INT_c.obj: D:\我的文档\Freescale\workplace\New\Sources\Button_INT
 	D:\我的文档\Freescale\workplace\New\Project_Headers\DIGTUBE_LED.h \
 	D:\我的文档\Freescale\workplace\New\Project_Headers\pad.h \
 	D:\我的文档\Freescale\workplace\New\Project_Headers\IntcInterrupts.h \
-	D:\我的文档\Freescale\workplace\New\Project_Headers\pwm_mc.h 
+	D:\我的文档\Freescale\workplace\New\Project_Headers\WRITE_SD.h \
+	D:\我的文档\Freescale\workplace\New\Sources\sd\lib\includes.h \
+	D:\我的文档\Freescale\workplace\New\Sources\sd\lib\ff.h \
+	D:\我的文档\Freescale\workplace\New\Sources\sd\lib\integer.h \
+	D:\我的文档\Freescale\workplace\New\Sources\sd\lib\ffconf.h \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\spi.h \
+	D:\我的文档\Freescale\workplace\New\Sources\sd\sd.h \
+	D:\我的文档\Freescale\workplace\New\Sources\sd\file_handler\file_handle.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\stdio.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\cstdio \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\stddef.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\cstddef \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\null.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\size_t.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\wchar_t.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\ewl_rsize_t.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\eof.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\va_list.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\file_struc.h \
+	D:\Freescale\CW\ MCU\ v10.6\MCU\PA_Support\ewl\EWL_C\include\stdio_api.h \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\pwm_mc.h \
+	D:\我的文档\Freescale\workplace\New\Project_Headers\adc.h 

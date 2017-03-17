@@ -18,6 +18,7 @@ void SW3_handler(void)
 void SW1_handler(void)
 {
 	EMIOS_0.CH[5].CSR.B.FLAG=1;//clear
+	
 	DIS_NUM=ADC.CDR[36].B.CDATA*5000/0x3FF;
 	display(ADC.CDR[36].B.CDATA*5000/0x3FF);
 	//SIU.GPDO[15].B.PDO^=1;
@@ -84,3 +85,23 @@ void PIT_INT(){
 	PIT.CH[3].TCTRL.B.TEN = 1;
 	INTC_InstallINTCInterruptHandler(PIT3_isr,127,1); /* vector127 for PIT3 */
 }
+void Single_Collection(){
+	long sys_clock_base,t,ticktock;
+	EMIOS_0.CH[ENCODER_CLK].CCR.B.MODE = 0x00;
+	EMIOS_0.CH[ENCODER_CLK].CCR.B.MODE = 0x13; 							// Modulus Counter(MC),输入模式 ,external clock*/，启动计数器
+	STM.CR.B.TEN = 1;											// STM enable and start
+	sys_clock_base=Read_Stm();
+	while(file_create(sys_clock_base)){}						//通过时间戳创建文件
+	LED=0;
+	/*Measuring*/
+	for(t=0;t<array_size;t++)
+	{	while((ticktock=Read_Stm()-sys_clock_base)%7000>10){}	//调整，使7ms一个周期;容差10us
+		result[t].ticktock=ticktock;							//时钟，分度值1us
+		result[t].volt=ADC.CDR[Vcurrent].B.CDATA*5000/0x3FF;			//current_capture();
+		result[t].current=ADC.CDR[VADJ_SIG].B.CDATA*5000/0x3FF; 		//volt_capture();
+		result[t].counter=(uint32_t)EMIOS_0.CH[ENCODER_CLK].CCNTR.B.CCNTR;
+	}															//使7ms1个
+	/*Saving*/
+	WRITE_SD(result);
+	EMIOS_0.CH[ENCODER_CLK].CCR.B.MODE = 00;//MS计数器清零
+} 
