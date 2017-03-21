@@ -20,11 +20,16 @@ short file_create(long timestamp){
 	else return 1;
 }
 /*写入采集的数据*/
-int WRITE_SD(struct mea_res result[])
+int WRITE_SD(struct mea_res result[],short status)
 {	unsigned short wr;
 	char strbuff[60]={"\0"};
+	char note[30]="Extra Damping Mode:";
 	int t;
 	if (FR_OK == f_open(&fil, tchar, FA_WRITE)){
+		if(status==1){
+			f_write(&fil, (const void *)&(note), sizeof(note), &wr);
+			f_lseek(&fil,f_size(&fil));
+		}
 		for(t=0;t<array_size;t++)
     	{	sprintf(strbuff,"\r\n%d\t%d\t%d\t%d\t%d",result[t].ticktock,result[t].duty,result[t].volt,(int)(result[t].current*1000),result[t].counter);
     		f_write(&fil, (const void *)&(strbuff), sizeof(strbuff), &wr);	//ADJ_Voltage如何计算
@@ -52,5 +57,4 @@ void init_SD_FatFs(){
 	SPI_4M(); 
 	LED=1;
 	FatFs_Init();		//文件系统初始化		
-	
 }

@@ -6,7 +6,6 @@
  */
 
 #include "pwm_mc.h"
-
 extern int Timecycle=533;
 void PWM_MC_config(){
 	SIU.PCR[pwm1_pcr].B.PA=01;		//Pwm1 output channel PE4-E0UC[20]		
@@ -73,6 +72,4 @@ float ask_duty(int show_ornot){//AR1
 	if(show_ornot==0) return DUTY;
 	DIS_NUM = DUTY;
 }
-/*Tips:
-1.CBDR越大，占空比越小
-*/
+

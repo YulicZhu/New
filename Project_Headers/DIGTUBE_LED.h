@@ -10,8 +10,8 @@
 #include "pad.h"
 #include "MPC5604B.h"
 #include "MODULE_Init.h"
-#define led_on(color) SIU.GPDO[color].B.PDO=0;
-#define led_off(color) SIU.GPDO[color].B.PDO=1;
+#define led_on(color) SIU.GPDO[color].B.PDO=0
+#define led_off(color) SIU.GPDO[color].B.PDO=1
 void display(float num);
 
 extern float DIS_NUM;

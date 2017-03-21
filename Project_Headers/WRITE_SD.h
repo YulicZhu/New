@@ -24,7 +24,7 @@ void delay(void);
 /*SD卡初始化*/
 void init_SD_FatFs();
 /*写入采集的数据*/
-int WRITE_SD(struct mea_res result[]);
+int WRITE_SD(struct mea_res result[],short status);
 /*创建文件*/
 short file_create(long timestamp);
 #endif /* WRITE_SD_H_ */
