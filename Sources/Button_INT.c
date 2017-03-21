@@ -7,29 +7,22 @@
 #include"Button_INT.h"
 #include "pwm_mc.h"
 uint16_t tosin[256]={273,280,286,293,299,306,312,318,325,331,338,344,350,356,362,368,374,380,386,392,398,404,409,415,420,425,430,436,441,445,450,455,460,464,468,473,477,481,484,488,492,495,498,502,505,507,510,513,515,517,520,522,523,525,527,528,529,530,531,532,532,533,533,533,533,533,532,532,531,530,529,528,527,525,523,522,520,517,515,513,510,507,505,502,498,495,492,488,484,481,477,473,468,464,460,455,450,445,441,436,430,425,420,415,409,404,398,392,386,380,374,368,362,356,350,344,338,331,325,318,312,306,299,293,286,280,273,267,260,253,247,240,234,227,221,215,208,202,195,189,183,177,171,165,159,153,147,141,135,129,124,118,113,108,103,97,92,88,83,78,73,69,65,60,56,52,49,45,41,38,35,31,28,26,23,20,18,16,13,11,10,8,6,5,4,3,2,1,1,0,0,0,0,0,1,1,2,3,4,5,6,8,10,11,13,16,18,20,23,26,28,31,35,38,41,45,49,52,56,60,65,69,73,78,83,88,92,97,103,108,113,118,124,129,135,141,147,153,159,165,171,177,183,189,195,202,208,215,221,227,234,240,247,253,260,266};
-
+struct mea_res result[array_size];
 void SW3_handler(void)
 {
 	CLEAR_EIRQ6;//clear
-	DIS_NUM=ADC.CDR[15].B.CDATA*5000/0x3FF;
-	display(ADC.CDR[15].B.CDATA*5000/0x3FF);
-	//SIU.GPDO[15].B.PDO^=1;
+	DIS_NUM=ask_POTENTIAL(Vmotor2,4)-ask_POTENTIAL(Vmotor1,4);
 }
-void SW1_handler(void)
+void SW1_handler(void)//
 {
 	EMIOS_0.CH[5].CSR.B.FLAG=1;//clear
+	Single_Collection();
 	
-	DIS_NUM=ADC.CDR[36].B.CDATA*5000/0x3FF;
-	display(ADC.CDR[36].B.CDATA*5000/0x3FF);
-	//SIU.GPDO[15].B.PDO^=1;
 }
 void SW2_handler(void)
 {
 	EMIOS_0.CH[18].CSR.B.FLAG=1;//clear
-	while(ADC.CDR[6].B.VALID!=1){}
-	DIS_NUM=ADC.CDR[6].B.CDATA*5000/0x3FF;
-	display(ADC.CDR[6].B.CDATA*5000/0x3FF);
-	//SIU.GPDO[15].B.PDO^=1;
+	DIS_NUM=ask_POTENTIAL(Vmotor2,3);
 }
 void ExINT_Init(){
 	//A5,E2,C3
@@ -86,7 +79,7 @@ void PIT_INT(){
 	INTC_InstallINTCInterruptHandler(PIT3_isr,127,1); /* vector127 for PIT3 */
 }
 void Single_Collection(){
-	long sys_clock_base,t,ticktock;
+	long sys_clock_base,t,ticktock,vmoter_temp;
 	EMIOS_0.CH[ENCODER_CLK].CCR.B.MODE = 0x00;
 	EMIOS_0.CH[ENCODER_CLK].CCR.B.MODE = 0x13; 							// Modulus Counter(MC),输入模式 ,external clock*/，启动计数器
 	STM.CR.B.TEN = 1;											// STM enable and start
@@ -97,8 +90,9 @@ void Single_Collection(){
 	for(t=0;t<array_size;t++)
 	{	while((ticktock=Read_Stm()-sys_clock_base)%7000>10){}	//调整，使7ms一个周期;容差10us
 		result[t].ticktock=ticktock;							//时钟，分度值1us
-		result[t].volt=ADC.CDR[Vcurrent].B.CDATA*5000/0x3FF;			//current_capture();
-		result[t].current=ADC.CDR[VADJ_SIG].B.CDATA*5000/0x3FF; 		//volt_capture();
+		result[t].duty=ask_duty(0)*1000;
+		result[t].volt=ask_POTENTIAL(VADJ_SIG,3*1.012);			//current_capture();
+		result[t].current=ask_POTENTIAL(Vcurrent,1.0/185)-5030.0/2/185; 		//volt_capture();
 		result[t].counter=(uint32_t)EMIOS_0.CH[ENCODER_CLK].CCNTR.B.CCNTR;
 	}															//使7ms1个
 	/*Saving*/

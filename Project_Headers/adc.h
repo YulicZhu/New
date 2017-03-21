@@ -9,13 +9,16 @@
 #define ADC_H_
 #include "MPC5604B.h"
 #include "pad.h"
+#include "DIGTUBE_LED.h"
 typedef enum{
-	AR1=15,
-	AR2=36,
+	AR1=36,
+	AR2=15,
 	Vmotor1=4,
 	Vmotor2=5,
 	VADJ_SIG=6,
 	Vcurrent=7
 }ADC_CHn;
+
+#define ask_POTENTIAL(ADC_CHn,coefficient) (uint16_t)ADC.CDR[ADC_CHn].B.CDATA*5030/0x3FF*coefficient
 void ADC_Init(void);
 #endif /* ADC_H_ */

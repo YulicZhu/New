@@ -13,10 +13,12 @@
 #include "Macro.h"
 #include "DIGTUBE_LED.h"
 struct mea_res{
-	uint32_t ticktock;
+	uint32_t ticktock;//us
+	//0.2~0.3
 	uint16_t volt;
-	uint16_t current;
+	float current;
 	uint32_t counter;
+	uint16_t duty;
 };						 		//结构体的声明，不能在.h中定义结构体
 void SYSTEM_Init();
 void SIU_Init();

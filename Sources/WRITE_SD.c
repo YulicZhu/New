@@ -22,12 +22,12 @@ short file_create(long timestamp){
 /*写入采集的数据*/
 int WRITE_SD(struct mea_res result[])
 {	unsigned short wr;
-	char strbuff[40]={"\0"};
+	char strbuff[60]={"\0"};
 	int t;
 	if (FR_OK == f_open(&fil, tchar, FA_WRITE)){
 		for(t=0;t<array_size;t++)
-    	{	sprintf(strbuff,"\r\n%d\t%d\t%d\t%d",result[t].ticktock,result[t].volt,result[t].current,result[t].counter);
-    		f_write(&fil, (const void *)&(strbuff), sizeof(strbuff), &wr);	
+    	{	sprintf(strbuff,"\r\n%d\t%d\t%d\t%d\t%d",result[t].ticktock,result[t].duty,result[t].volt,(int)(result[t].current*1000),result[t].counter);
+    		f_write(&fil, (const void *)&(strbuff), sizeof(strbuff), &wr);	//ADJ_Voltage如何计算
     		f_lseek(&fil,f_size(&fil)); //移动指针位置
     	}
     }

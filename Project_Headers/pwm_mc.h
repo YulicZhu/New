@@ -23,5 +23,5 @@ typedef enum{
 	Timebase=23
 }PWM_CHn;
 void PWM_MC_config();
-void ask_duty();
+float ask_duty(int show_ornot);
 #endif /* PWM_MC_H_ */

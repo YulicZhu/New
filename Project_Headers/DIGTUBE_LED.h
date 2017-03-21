@@ -12,9 +12,9 @@
 #include "MODULE_Init.h"
 #define led_on(color) SIU.GPDO[color].B.PDO=0;
 #define led_off(color) SIU.GPDO[color].B.PDO=1;
-void display(int num);
+void display(float num);
 
-extern int DIS_NUM;
+extern float DIS_NUM;
 
 
 #endif /* DIGTUBE_LED_H_ */
