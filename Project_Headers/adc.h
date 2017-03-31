@@ -18,7 +18,7 @@ typedef enum{
 	VADJ_SIG=6,
 	Vcurrent=7
 }ADC_CHn;
-
-#define ask_POTENTIAL(ADC_CHn,coefficient) (uint16_t)ADC.CDR[ADC_CHn].B.CDATA*5030/0x3FF*coefficient
+#define assert_valid(ADC_CHn)	while(ADC.CDR[ADC_CHn].B.VALID!=1){}
+#define ask_POTENTIAL(ADC_CHn,coefficient) (uint16_t)ADC.CDR[ADC_CHn].B.CDATA*5030.0/0x3FF*coefficient
 void ADC_Init(void);
 #endif /* ADC_H_ */

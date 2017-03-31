@@ -7,7 +7,6 @@
 #include "pwm_mc.h"
 #include "adc.h"
 //void Single_Collection();
-
 int main(void) {
 	int t,temp;
 	SYSTEM_Init();
@@ -16,11 +15,10 @@ int main(void) {
 	ADC_Init();
 	ExINT_Init();
 	//PIT_INT();//…Ë÷√PWMŒ™’˝œ“≤®
-	init_SD_FatFs();
+	//init_SD_FatFs();
 	
-	DIS_NUM=3.40;
 	while(1){
-		display(DIS_NUM);
-		ask_duty(1);
+		//display(ask_duty());
+		display((uint16_t)EMIOS_0.CH[ENCODER_CLK].CCNTR.B.CCNTR);
 	}
 }

@@ -16,7 +16,7 @@
 
 
 #define  LED	SIU.GPDO[76].B.PDO	//¸Ä
-#define array_size 512
+#define array_size 1024
 
 extern struct mea_res result[];
 

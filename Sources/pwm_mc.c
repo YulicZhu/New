@@ -8,9 +8,15 @@
 #include "pwm_mc.h"
 extern int Timecycle=533;
 void PWM_MC_config(){
+	SIU.PCR[pwm1_pcr].B.OBE=01;
 	SIU.PCR[pwm1_pcr].B.PA=01;		//Pwm1 output channel PE4-E0UC[20]		
 	//SIU.PCR[pwm2_pcr].B.PA=01;		//Pwm2 output channel PA2-E0UC[2]	
+	SIU.PCR[encoder_clk_pcr].B.ODE=01;
+	SIU.PCR[encoder_clk_pcr].B.IBE=01;
 	SIU.PCR[encoder_clk_pcr].B.PA=01;				//ENCODER_CLK-Modulus Counter channel input-E0-E0UC[8];
+	SIU.PCR[encoder_clk_pcr].B.WPE=01;
+	SIU.PCR[encoder_clk_pcr].B.WPS=01;
+	
 	SIU.PCR[timebase_pcr].B.PA=01;			//Timebase channel	PE7
 	
 	//temporary
@@ -43,7 +49,7 @@ void PWM_MC_config(){
 	//
 	EMIOS_0.CH[PWM1].CCR.B.UCPEN=00;
 	EMIOS_0.CH[PWM1].CADR.B.CADR =00;
-	EMIOS_0.CH[PWM1].CBDR.B.CBDR =Timecycle*0.8;
+	EMIOS_0.CH[PWM1].CBDR.B.CBDR =Timecycle;
 	EMIOS_0.CH[PWM1].CCR.B.BSL=00;
 	EMIOS_0.CH[PWM1].CCR.B.MODE =0140;//set channel mode to OPWMB(only A1 match FLAG)
 	EMIOS_0.CH[PWM1].CCR.B.UCPRE=00;	//channel prescaler pass through
@@ -59,9 +65,10 @@ void PWM_MC_config(){
 	EMIOS_0.MCR.B.GPREN = 1;		//Enable Global Prescaler
 	EMIOS_0.MCR.B.GTBE = 1;			//Enable Global Timebase	
 }
-float ask_duty(int show_ornot){//AR1
+float ask_duty(){//AR1
 	uint16_t new_CBDR,Vol_AR1;
 	float DUTY;
+	assert_valid(AR1);
 	Vol_AR1=ask_POTENTIAL(AR1,1);
 	DUTY=1-(0.2+Vol_AR1*0.001*0.12);
 	new_CBDR=(uint16_t)((1-DUTY)*Timecycle);
@@ -69,7 +76,6 @@ float ask_duty(int show_ornot){//AR1
 	if((new_CBDR-DUTY_REGISTER)>0.01*Timecycle||(new_CBDR-DUTY_REGISTER)<-0.01*Timecycle){
 		DUTY_REGISTER= new_CBDR;//duty=0.2~0.8
 	}
-	if(show_ornot==0) return DUTY;
-	DIS_NUM = DUTY;
+	return DUTY;
 }
 

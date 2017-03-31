@@ -14,7 +14,7 @@
 
 #define PWM_duty(pwm,value) EMIOS_0.CH[pwm].CBDR.B.CBDR =value
 #define DUTY_REGISTER EMIOS_0.CH[PWM1].CBDR.B.CBDR
-
+extern int Timecycle;
 
 typedef enum{
 	PWM2=2,
@@ -23,5 +23,5 @@ typedef enum{
 	Timebase=23
 }PWM_CHn;
 void PWM_MC_config();
-float ask_duty(int show_ornot);
+float ask_duty();
 #endif /* PWM_MC_H_ */

@@ -11,23 +11,24 @@ struct mea_res result[array_size];
 short status;//标记是否有额外阻尼
 void SW3_handler(void)
 {
+	display(ask_POTENTIAL(Vmotor2,4)-ask_POTENTIAL(Vmotor1,4));
 	CLEAR_EIRQ6;//clear
-	DIS_NUM=ask_POTENTIAL(Vmotor2,4)-ask_POTENTIAL(Vmotor1,4);
 }
 void SW1_handler(void)//
 {
-	EMIOS_0.CH[5].CSR.B.FLAG=1;//clear
 	Single_Collection();
+	DUTY_REGISTER =Timecycle;
+	EMIOS_0.CH[5].CSR.B.FLAG=1;//clear
 	
 }
 void SW2_handler(void)
 {
-	EMIOS_0.CH[18].CSR.B.FLAG=1;//clear
 	status^=1;
 	if(status==0)
 		led_off(blue2);
 	else
 		led_on(blue2);
+	EMIOS_0.CH[18].CSR.B.FLAG=1;//clear
 }
 void ExINT_Init(){
 	//A5,E2,C3
@@ -93,13 +94,19 @@ void Single_Collection(){
 	while(file_create(sys_clock_base)){}						//通过时间戳创建文件
 	LED=0;
 	/*Measuring*/
+	
 	for(t=0;t<array_size;t++)
-	{	while((ticktock=Read_Stm()-sys_clock_base)%7000>10){}	//调整，使7ms一个周期;容差10us
+	{	
+		if(t==100)DUTY_REGISTER =Timecycle*0.4;//set_a_duty
+		while((ticktock=Read_Stm())-sys_clock_base<1000){}	//调整，使1ms一个周期
 		result[t].ticktock=ticktock;							//时钟，分度值1us
-		result[t].duty=ask_duty(0)*1000;
-		result[t].volt=ask_POTENTIAL(VADJ_SIG,3*1.012);			//current_capture();
-		result[t].current=ask_POTENTIAL(Vcurrent,1.0/185)-5030.0/2/185; 		//volt_capture();
+		result[t].duty=(uint16_t)(ask_duty()*1000);
+		assert_valid(VADJ_SIG);
+		result[t].volt=(uint16_t)(ask_POTENTIAL(VADJ_SIG,3*1.012));			//current_capture();
+		assert_valid(Vcurrent);
+		result[t].current=ask_POTENTIAL(Vcurrent,1.0/185)-13.75223; 		//volt_capture();
 		result[t].counter=(uint32_t)EMIOS_0.CH[ENCODER_CLK].CCNTR.B.CCNTR;
+		sys_clock_base=Read_Stm();
 	}															//使7ms1个
 	/*Saving*/
 	WRITE_SD(result,status);
